@@ -1,6 +1,6 @@
 # Helpdesk — projet fil rouge des cours Symfony
 
-Application de gestion des demandes d'assistance d'une PME : les salariés
+Application de gestion des demandes d'assistance de Norbelle, PME fictive de 80 salariés sur deux sites (Limoges et Brive) : les salariés
 déclarent des incidents, les techniciens les prennent en charge, les
 responsables suivent l'activité.
 
@@ -50,14 +50,14 @@ docker compose exec php composer require …
 | `symfony-01-depart` | Symfony - Démarrer avec symfony-docker | Modèle symfony-docker seul : Symfony s'installe au premier `docker compose up` |
 | `symfony-02-depart` | Symfony - Routes et contrôleurs | Symfony 8 installé, page d'accueil par défaut |
 | `symfony-03-depart` | Symfony - Les templates Twig | Contrôleurs et routes des tickets, données en dur |
-| `symfony-04-depart` | Symfony - Doctrine : installer l'ORM et créer ses entités | Pages en Twig, mise en page commune |
-| `symfony-05-depart` | Symfony - Changer de SGBD : passer à MySQL | Doctrine installé avec PostgreSQL, entités Ticket et Catégorie, première migration |
-| `symfony-06-depart` | Symfony - Doctrine : lire et écrire les données | Base MySQL, migrations régénérées |
-| `symfony-07-depart` | Symfony - Les relations Doctrine | Tickets lus et enregistrés en base, jeu de données de démonstration |
+| `symfony-04-depart` | Symfony - Créer ses entités avec Doctrine | Pages en Twig, mise en page commune |
+| `symfony-05-depart` | Symfony - Passer de PostgreSQL à MySQL | Doctrine installé avec PostgreSQL, entités Ticket et Catégorie, première migration |
+| `symfony-06-depart` | Symfony - Lire et écrire avec Doctrine | Base MySQL, migrations régénérées |
+| `symfony-07-depart` | Symfony - Les relations entre entités | Tickets lus et enregistrés en base, jeu de données de démonstration |
 | `symfony-08-depart` | Symfony - Les formulaires | Relations Ticket ↔ Catégorie, Matériel, Utilisateur |
-| `symfony-09-depart` | Symfony - La validation des données | Formulaire « Déclarer un incident » |
-| `symfony-10-depart` | Symfony - Sécurité : l'authentification | Règles de validation des tickets |
-| `symfony-11-depart` | Symfony - Sécurité : rôles et autorisations | Connexion des salariés et techniciens |
+| `symfony-09-depart` | Symfony - Valider les données | Formulaire « Déclarer un incident » |
+| `symfony-10-depart` | Symfony - L'authentification | Règles de validation des tickets |
+| `symfony-11-depart` | Symfony - Rôles et autorisations | Connexion des salariés et techniciens |
 | `symfony-12-depart` | Symfony - Services et injection de dépendances | Droits par rôle, voter sur les tickets |
 | `symfony-13-depart` | Symfony - Exposer une API JSON | Service de calcul du délai de résolution |
 | `symfony-fin` | — | Projet terminé |
