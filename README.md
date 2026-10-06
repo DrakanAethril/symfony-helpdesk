@@ -54,10 +54,10 @@ docker compose exec php composer require …
 | `symfony-05-depart` | Symfony - Passer de PostgreSQL à MySQL | Doctrine installé avec PostgreSQL, entités Ticket et Catégorie, première migration |
 | `symfony-06-depart` | Symfony - Lire et écrire avec Doctrine | Base MySQL, migrations régénérées |
 | `symfony-07-depart` | Symfony - Les relations entre entités | Tickets lus et enregistrés en base, jeu de données de démonstration |
-| `symfony-08-depart` | Symfony - Les formulaires | Relations Ticket ↔ Catégorie, Matériel, Utilisateur |
+| `symfony-08-depart` | Symfony - Les formulaires | Relations Ticket ↔ Catégorie et Ticket ↔ Matériel |
 | `symfony-09-depart` | Symfony - Valider les données | Formulaire « Déclarer un incident » |
 | `symfony-10-depart` | Symfony - L'authentification | Règles de validation des tickets |
-| `symfony-11-depart` | Symfony - Rôles et autorisations | Connexion des salariés et techniciens |
+| `symfony-11-depart` | Symfony - Rôles et autorisations | Connexion des utilisateurs, auteur relié aux tickets |
 | `symfony-12-depart` | Symfony - Services et injection de dépendances | Droits par rôle, voter sur les tickets |
 | `symfony-13-depart` | Symfony - Exposer une API JSON | Service de calcul du délai de résolution |
 | `symfony-fin` | — | Projet terminé |
