@@ -1,2 +1,3 @@
 # tag sha message
 symfony-01-depart 74938e144b94430887064797617b6ea4a3f8be28 Départ du cours Symfony - Démarrer avec symfony-docker
+symfony-02-depart fa1ac154caab7d51fab1256b1b5c1f47d00658bd Départ du cours Symfony - Routes et contrôleurs
