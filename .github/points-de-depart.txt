@@ -3,3 +3,4 @@ symfony-01-depart 74938e144b94430887064797617b6ea4a3f8be28 Départ du cours Symf
 symfony-02-depart fa1ac154caab7d51fab1256b1b5c1f47d00658bd Départ du cours Symfony - Routes et contrôleurs
 symfony-03-depart 1609d002d84d489adcc8bffe0e0c7f4762a13291 Départ du cours Symfony - Les templates Twig
 symfony-04-depart e71738eabf9f2d08f664adc17627b23bebb2b993 Départ du cours Symfony - Mettre en forme avec Tailwind CSS
+symfony-05-depart bbbab125830af80360f74258ef164783572eaa1b Départ du cours Symfony - Créer ses entités avec Doctrine
