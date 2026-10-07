@@ -65,5 +65,5 @@ jobs:
         run: |
           docker compose ps --all
           docker compose logs --no-color
-          msg=$( { docker compose ps --all; docker compose logs --no-color --tail=60; } 2>&1 | tail -n 80 | sed -e 's/%/%25/g' -e 's/\r//g' | awk '{printf "%s%%0A", $0}')
+          msg=$(docker compose logs --no-color 2>&1 | grep -v ' Installing ' | sed -e 's/\x1b\[[0-9;]*m//g' | tail -n 30 | cut -c 1-200 | sed -e 's/%/%25/g' -e 's/\r//g' | awk '{printf "%s%%0A", $0}')
           echo "::error title=Service logs::${msg}"
