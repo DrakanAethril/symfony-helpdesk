@@ -21,20 +21,150 @@ L'environnement repose sur [symfony-docker](https://github.com/dunglas/symfony-d
 - Sous Windows : cloner le projet **dans WSL** (`~/…` dans le terminal
   Ubuntu), pas dans `C:\Users\…`, sinon tout devient très lent
 
-## Reprendre le projet au début d'un cours
+## Récupérer le projet
+
+Une seule fois, au début :
 
 ```console
 git clone https://github.com/<compte>/symfony-helpdesk.git
 cd symfony-helpdesk
-git switch -c mon-travail symfony-XX-depart
+```
+
+## Se placer au début d'un chapitre
+
+Chaque chapitre a sa commande. Elle récupère les derniers points de départ
+publiés (`git fetch --tags`), puis crée une branche de travail à partir de
+celui du chapitre. On peut le faire à tout moment, même sans avoir fait les
+chapitres précédents.
+
+Si votre travail en cours n'est pas encore validé, enregistrez-le d'abord
+avec `git commit` (ou mettez-le de côté avec `git stash`).
+
+### 01 · Symfony - Démarrer avec symfony-docker
+
+Modèle symfony-docker seul : Symfony s'installe au premier démarrage.
+
+```console
+git fetch --tags && git switch -c cours-01 symfony-01-depart
+```
+
+### 02 · Symfony - Routes et contrôleurs
+
+Symfony 8 installé, page d'accueil par défaut.
+
+```console
+git fetch --tags && git switch -c cours-02 symfony-02-depart
+```
+
+### 03 · Symfony - Les templates Twig
+
+Contrôleurs et routes des tickets, données en dur.
+
+```console
+git fetch --tags && git switch -c cours-03 symfony-03-depart
+```
+
+### 04 · Symfony - Créer ses entités avec Doctrine
+
+Pages en Twig, mise en page commune.
+
+```console
+git fetch --tags && git switch -c cours-04 symfony-04-depart
+```
+
+### 05 · Symfony - Passer de PostgreSQL à MySQL
+
+Doctrine installé avec PostgreSQL, entités Ticket et Catégorie, première migration.
+
+```console
+git fetch --tags && git switch -c cours-05 symfony-05-depart
+```
+
+### 06 · Symfony - Lire et écrire avec Doctrine
+
+Base MySQL, migrations régénérées.
+
+```console
+git fetch --tags && git switch -c cours-06 symfony-06-depart
+```
+
+### 07 · Symfony - Les relations entre entités
+
+Tickets lus et enregistrés en base, jeu de données de démonstration.
+
+```console
+git fetch --tags && git switch -c cours-07 symfony-07-depart
+```
+
+### 08 · Symfony - Les formulaires
+
+Relations Ticket ↔ Catégorie et Ticket ↔ Matériel.
+
+```console
+git fetch --tags && git switch -c cours-08 symfony-08-depart
+```
+
+### 09 · Symfony - Valider les données
+
+Formulaire « Déclarer un incident ».
+
+```console
+git fetch --tags && git switch -c cours-09 symfony-09-depart
+```
+
+### 10 · Symfony - L'authentification
+
+Règles de validation des tickets.
+
+```console
+git fetch --tags && git switch -c cours-10 symfony-10-depart
+```
+
+### 11 · Symfony - Rôles et autorisations
+
+Connexion des utilisateurs, auteur relié aux tickets.
+
+```console
+git fetch --tags && git switch -c cours-11 symfony-11-depart
+```
+
+### 12 · Symfony - Services et injection de dépendances
+
+Droits par rôle, voter sur les tickets.
+
+```console
+git fetch --tags && git switch -c cours-12 symfony-12-depart
+```
+
+### 13 · Symfony - Exposer une API JSON
+
+Service de calcul du délai de résolution.
+
+```console
+git fetch --tags && git switch -c cours-13 symfony-13-depart
+```
+
+### Projet terminé
+
+```console
+git fetch --tags && git switch -c projet-termine symfony-fin
+```
+
+Les points de départ sont publiés au fur et à mesure des chapitres : si la
+commande répond « invalid reference », ce chapitre n'est pas encore
+disponible.
+
+## Démarrer l'environnement
+
+Après avoir changé de chapitre, reconstruire puis démarrer :
+
+```console
 docker compose build --pull --no-cache
 docker compose up --wait
 ```
 
-Remplacer `XX` par le numéro du cours, puis ouvrir <https://localhost> et
-accepter le certificat de sécurité généré localement.
-
-Pour arrêter : `docker compose down --remove-orphans`.
+Ouvrir ensuite <https://localhost> et accepter le certificat de sécurité
+généré localement. Pour arrêter : `docker compose down --remove-orphans`.
 
 Toutes les commandes Symfony s'exécutent **dans le conteneur** :
 
@@ -42,24 +172,3 @@ Toutes les commandes Symfony s'exécutent **dans le conteneur** :
 docker compose exec php bin/console about
 docker compose exec php composer require …
 ```
-
-## Les points de départ
-
-| Tag | Cours | État du projet au départ |
-|---|---|---|
-| `symfony-01-depart` | Symfony - Démarrer avec symfony-docker | Modèle symfony-docker seul : Symfony s'installe au premier `docker compose up` |
-| `symfony-02-depart` | Symfony - Routes et contrôleurs | Symfony 8 installé, page d'accueil par défaut |
-| `symfony-03-depart` | Symfony - Les templates Twig | Contrôleurs et routes des tickets, données en dur |
-| `symfony-04-depart` | Symfony - Créer ses entités avec Doctrine | Pages en Twig, mise en page commune |
-| `symfony-05-depart` | Symfony - Passer de PostgreSQL à MySQL | Doctrine installé avec PostgreSQL, entités Ticket et Catégorie, première migration |
-| `symfony-06-depart` | Symfony - Lire et écrire avec Doctrine | Base MySQL, migrations régénérées |
-| `symfony-07-depart` | Symfony - Les relations entre entités | Tickets lus et enregistrés en base, jeu de données de démonstration |
-| `symfony-08-depart` | Symfony - Les formulaires | Relations Ticket ↔ Catégorie et Ticket ↔ Matériel |
-| `symfony-09-depart` | Symfony - Valider les données | Formulaire « Déclarer un incident » |
-| `symfony-10-depart` | Symfony - L'authentification | Règles de validation des tickets |
-| `symfony-11-depart` | Symfony - Rôles et autorisations | Connexion des utilisateurs, auteur relié aux tickets |
-| `symfony-12-depart` | Symfony - Services et injection de dépendances | Droits par rôle, voter sur les tickets |
-| `symfony-13-depart` | Symfony - Exposer une API JSON | Service de calcul du délai de résolution |
-| `symfony-fin` | — | Projet terminé |
-
-Les tags sont ajoutés au fur et à mesure de la publication des cours.
