@@ -6,3 +6,4 @@ symfony-04-depart e71738eabf9f2d08f664adc17627b23bebb2b993 Départ du cours Symf
 symfony-05-depart bbbab125830af80360f74258ef164783572eaa1b Départ du cours Symfony - Créer ses entités avec Doctrine
 symfony-06-depart 2179c32d8ee9b272679b69a71cf71f723af2e8e4 Départ du cours Symfony - Passer de PostgreSQL à MySQL
 symfony-07-depart 508ff6c8889698ead673534d1bc0aaad4260c85b Départ du cours Symfony - Lire et écrire avec Doctrine
+symfony-08-depart 489145647c74eca6dfc40bbb43bd5d4a1d50dcad Départ du cours Symfony - Les relations entre entités
