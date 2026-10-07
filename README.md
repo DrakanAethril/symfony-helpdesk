@@ -188,10 +188,6 @@ git fetch --tags && git switch -c cours-14 symfony-14-depart
 git fetch --tags && git switch -c projet-termine symfony-fin
 ```
 
-Les points de départ sont publiés au fur et à mesure des chapitres : si la
-commande répond « invalid reference », ce chapitre n'est pas encore
-disponible.
-
 ## Démarrer l'environnement
 
 Après avoir changé de chapitre, reconstruire puis démarrer :
