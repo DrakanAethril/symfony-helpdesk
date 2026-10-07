@@ -12,3 +12,4 @@ symfony-10-depart b7ea9aa6a7aca8a79da0436d3784b5d4ce86668f Départ du cours Symf
 symfony-11-depart 20d7be9b984b77f77616c80b02cfa8fceaa6b0b0 Départ du cours Symfony - L'authentification
 symfony-12-depart 8754d29606b005bc4c8aa6c8d875beee85999ce1 Départ du cours Symfony - Rôles et autorisations
 symfony-13-depart b8231d3628e57623f93ae78cb800e3cf49fcaf5a Départ du cours Symfony - Services et injection de dépendances
+symfony-14-depart a94da3f3dd1d9abf52c00ba16b0b602d6616756e Départ du cours Symfony - Exposer une API JSON
