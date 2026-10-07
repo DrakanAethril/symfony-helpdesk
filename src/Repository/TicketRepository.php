@@ -18,6 +18,21 @@ class TicketRepository extends ServiceEntityRepository
     }
 
     /**
+     * Tous les tickets, avec leur catégorie et leurs matériels, en une requête.
+     *
+     * @return Ticket[]
+     */
+    public function findAvecRelations(): array
+    {
+        return $this->createQueryBuilder('t')
+            ->addSelect('c', 'm')
+            ->join('t.categorie', 'c')
+            ->leftJoin('t.materiels', 'm')
+            ->orderBy('t.creeLe', 'DESC')
+            ->getQuery()->getResult();
+    }
+
+    /**
      * Les tickets ni résolus ni fermés, les plus urgents d'abord.
      *
      * @return Ticket[]

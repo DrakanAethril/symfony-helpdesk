@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Enum\Priorite;
 use App\Enum\Statut;
 use App\Repository\TicketRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,6 +35,21 @@ class Ticket
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $resoluLe = null;
+
+    #[ORM\ManyToOne(inversedBy: 'tickets')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
+    /**
+     * @var Collection<int, Materiel>
+     */
+    #[ORM\ManyToMany(targetEntity: Materiel::class, inversedBy: 'tickets')]
+    private Collection $materiels;
+
+    public function __construct()
+    {
+        $this->materiels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,6 +124,42 @@ class Ticket
     public function setResoluLe(?\DateTimeImmutable $resoluLe): static
     {
         $this->resoluLe = $resoluLe;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Materiel>
+     */
+    public function getMateriels(): Collection
+    {
+        return $this->materiels;
+    }
+
+    public function addMateriel(Materiel $materiel): static
+    {
+        if (!$this->materiels->contains($materiel)) {
+            $this->materiels->add($materiel);
+        }
+
+        return $this;
+    }
+
+    public function removeMateriel(Materiel $materiel): static
+    {
+        $this->materiels->removeElement($materiel);
 
         return $this;
     }

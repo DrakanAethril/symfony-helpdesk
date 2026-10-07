@@ -4,6 +4,8 @@
 
 {% block body %}
     <h1 class="text-2xl font-bold">{{ ticket.titre }}</h1>
+    <p class="text-sm text-gray-500">
+        Catégorie : {{ ticket.categorie.nom }}</p>
     {% include 'ticket/_priorite.html.twig' with { priorite: ticket.priorite.value } %}
     <p class="mt-4">{{ ticket.description }}</p>
     <dl class="mt-4">
@@ -16,5 +18,15 @@
             <dd>{{ ticket.resoluLe|date('d/m/Y H:i') }}</dd>
         {% endif %}
     </dl>
+
+    <h2 class="text-lg font-semibold mt-6">Matériels concernés</h2>
+    <ul class="mt-4 list-disc pl-6">
+    {% for m in ticket.materiels %}
+        <li>{{ m.numeroInventaire }} · {{ m.type }} · {{ m.site }}</li>
+    {% else %}
+        <li class="text-gray-500">
+          Aucun matériel concerné.</li>
+    {% endfor %}
+    </ul>
     <a href="{{ path('ticket_index') }}" class="mt-6 inline-block text-blue-700 underline">Retour aux tickets</a>
 {% endblock %}
