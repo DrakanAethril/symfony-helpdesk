@@ -6,6 +6,7 @@ use App\Repository\MaterielRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -21,12 +22,15 @@ class Materiel
     #[ORM\Column(length: 20, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Regex('/^[A-Z]{2,3}-\d{4}$/', message: 'Le numéro d\'inventaire suit le format PC-0042.')]
+    #[Groups(['ticket:detail'])]
     private ?string $numeroInventaire = null;
 
     #[ORM\Column(length: 30)]
+    #[Groups(['ticket:detail'])]
     private ?string $type = null;
 
     #[ORM\Column(length: 20)]
+    #[Groups(['ticket:detail'])]
     private ?string $site = null;
 
     /**

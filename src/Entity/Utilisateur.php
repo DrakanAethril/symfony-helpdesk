@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -32,9 +33,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 80)]
+    #[Groups(['ticket:detail'])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 80)]
+    #[Groups(['ticket:detail'])]
     private ?string $prenom = null;
 
     public function getId(): ?int
