@@ -28,6 +28,7 @@ final class TicketController extends AbstractController
         $form = $this->createForm(TicketType::class, $ticket);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $ticket->setAuteur($this->getUser());
             $em->persist($ticket);
             $em->flush();
             $this->addFlash('success', 'Incident déclaré.');

@@ -56,6 +56,13 @@ class Ticket
     #[ORM\ManyToMany(targetEntity: Materiel::class, inversedBy: 'tickets')]
     private Collection $materiels;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Utilisateur $auteur = null;
+
+    #[ORM\ManyToOne]
+    private ?Utilisateur $technicien = null;
+
     public function __construct()
     {
         $this->statut = Statut::Nouveau;
@@ -172,6 +179,30 @@ class Ticket
     public function removeMateriel(Materiel $materiel): static
     {
         $this->materiels->removeElement($materiel);
+
+        return $this;
+    }
+
+    public function getAuteur(): ?Utilisateur
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur(?Utilisateur $auteur): static
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getTechnicien(): ?Utilisateur
+    {
+        return $this->technicien;
+    }
+
+    public function setTechnicien(?Utilisateur $technicien): static
+    {
+        $this->technicien = $technicien;
 
         return $this;
     }

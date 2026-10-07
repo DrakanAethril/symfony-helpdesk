@@ -13,6 +13,10 @@
         <dd>{{ ticket.statut.value }}</dd>
         <dt class="font-medium">Créé le</dt>
         <dd>{{ ticket.creeLe|date('d/m/Y H:i') }}</dd>
+        <dt class="font-medium">Auteur</dt>
+        <dd>{{ ticket.auteur.prenom }} {{ ticket.auteur.nom }}</dd>
+        <dt class="font-medium">Technicien</dt>
+        <dd>{{ ticket.technicien ? ticket.technicien.prenom ~ ' ' ~ ticket.technicien.nom : 'Non assigné' }}</dd>
         {% if ticket.resoluLe %}
             <dt class="font-medium">Résolu le</dt>
             <dd>{{ ticket.resoluLe|date('d/m/Y H:i') }}</dd>

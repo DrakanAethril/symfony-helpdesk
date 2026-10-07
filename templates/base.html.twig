@@ -26,6 +26,15 @@
             <nav class="flex gap-4">
                 <a href="{{ path('accueil') }}" class="{{ route == 'accueil' ? actif }}">Accueil</a>
                 <a href="{{ path('ticket_index') }}" class="{{ route starts with 'ticket' ? actif }}">Tickets</a>
+                {% if app.user %}
+                    <span class="text-sm text-gray-500">Connecté en tant que
+                        {{ app.user.prenom }} {{ app.user.nom }}</span>
+                    <a href="{{ path('app_logout') }}"
+                       class="text-blue-700 underline">Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"
+                       class="text-blue-700 underline">Se connecter</a>
+                {% endif %}
             </nav>
         </header>
         <main class="mx-auto max-w-3xl p-6">
