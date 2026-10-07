@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ticket;
 use App\Form\TicketType;
 use App\Repository\TicketRepository;
+use App\Service\DelaiResolution;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,11 +15,17 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class TicketController extends AbstractController
 {
+    public function __construct(
+        private readonly DelaiResolution $delais,
+    ) {
+    }
+
     #[Route('/tickets', name: 'ticket_index', methods: ['GET'])]
     public function index(TicketRepository $repo): Response
     {
         return $this->render('ticket/index.html.twig', [
             'tickets' => $repo->findAvecRelations(),
+            'delais' => $this->delais,
         ]);
     }
 
@@ -47,6 +54,8 @@ final class TicketController extends AbstractController
     {
         return $this->render('ticket/show.html.twig', [
             'ticket' => $ticket,
+            'echeance' => $this->delais->echeance($ticket),
+            'enRetard' => $this->delais->estEnRetard($ticket),
         ]);
     }
 

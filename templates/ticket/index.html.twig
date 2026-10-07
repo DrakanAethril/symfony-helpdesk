@@ -10,6 +10,12 @@
         {% for ticket in tickets|filter(t => is_granted('TICKET_VIEW', t)) %}
             <li class="rounded-xl border p-4">
                 {{ include('ticket/_ticket.html.twig') }}
+                <p class="text-sm text-gray-500">Échéance :
+                    {{ delais.echeance(ticket)|date('d/m H:i') }}</p>
+                {% if delais.estEnRetard(ticket) %}
+                    <span class="rounded-full bg-red-100 px-3 py-1
+                        text-sm font-medium text-red-800">en retard</span>
+                {% endif %}
             </li>
         {% else %}
             <li class="text-gray-500">Aucun ticket.</li>
