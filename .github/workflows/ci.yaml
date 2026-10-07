@@ -49,6 +49,10 @@ jobs:
         run: curl -v --insecure --fail-with-body https://localhost
       - name: Check Mercure reachability
         run: curl -vI --insecure --fail-with-body https://localhost/.well-known/mercure?topic=test
+      - name: Allow the app user to create the test database
+        run: |
+          root_password=$(docker compose logs database | grep -o 'GENERATED ROOT PASSWORD: [^ ]*' | cut -d' ' -f4)
+          docker compose exec -T database mysql -uroot -p"$root_password" -e "GRANT ALL PRIVILEGES ON \`app_test%\`.* TO 'app'@'%'"
       - name: Create test database
         run: docker compose exec -T php bin/console -e test doctrine:database:create
       - name: Run migrations
