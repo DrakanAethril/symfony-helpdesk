@@ -32,6 +32,8 @@ cd symfony-helpdesk
 
 ## Se placer au début d'un chapitre
 
+Tous les cours sont sur <https://formations.beaupeyrat.org/courses/sebthar>.
+
 Chaque chapitre a sa commande. Elle récupère les derniers points de départ
 publiés (`git fetch --tags`), puis crée une branche de travail à partir de
 celui du chapitre. On peut le faire à tout moment, même sans avoir fait les
@@ -42,6 +44,8 @@ avec `git commit` (ou mettez-le de côté avec `git stash`).
 
 ### 01 · Symfony - Démarrer avec symfony-docker
 
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-demarrer-avec-symfony-docker>
+
 Modèle symfony-docker seul : Symfony s'installe au premier démarrage.
 
 ```console
@@ -49,6 +53,8 @@ git fetch --tags && git switch -c cours-01 symfony-01-depart
 ```
 
 ### 02 · Symfony - Routes et contrôleurs
+
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-routes-et-controleurs>
 
 Symfony 8 installé, page d'accueil par défaut.
 
@@ -58,6 +64,8 @@ git fetch --tags && git switch -c cours-02 symfony-02-depart
 
 ### 03 · Symfony - Les templates Twig
 
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-les-templates-twig>
+
 Contrôleurs et routes des tickets, données en dur.
 
 ```console
@@ -65,6 +73,8 @@ git fetch --tags && git switch -c cours-03 symfony-03-depart
 ```
 
 ### 04 · Symfony - Créer ses entités avec Doctrine
+
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-creer-ses-entites-avec-doctrine>
 
 Pages en Twig, mise en page commune.
 
@@ -74,6 +84,8 @@ git fetch --tags && git switch -c cours-04 symfony-04-depart
 
 ### 05 · Symfony - Passer de PostgreSQL à MySQL
 
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-passer-de-postgresql-a-mysql>
+
 Doctrine installé avec PostgreSQL, entités Ticket et Catégorie, première migration.
 
 ```console
@@ -81,6 +93,8 @@ git fetch --tags && git switch -c cours-05 symfony-05-depart
 ```
 
 ### 06 · Symfony - Lire et écrire avec Doctrine
+
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-lire-et-ecrire-avec-doctrine>
 
 Base MySQL, migrations régénérées.
 
@@ -90,6 +104,8 @@ git fetch --tags && git switch -c cours-06 symfony-06-depart
 
 ### 07 · Symfony - Les relations entre entités
 
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-les-relations-entre-entites>
+
 Tickets lus et enregistrés en base, jeu de données de démonstration.
 
 ```console
@@ -97,6 +113,8 @@ git fetch --tags && git switch -c cours-07 symfony-07-depart
 ```
 
 ### 08 · Symfony - Les formulaires
+
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-les-formulaires>
 
 Relations Ticket ↔ Catégorie et Ticket ↔ Matériel.
 
@@ -106,6 +124,8 @@ git fetch --tags && git switch -c cours-08 symfony-08-depart
 
 ### 09 · Symfony - Valider les données
 
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-valider-les-donnees>
+
 Formulaire « Déclarer un incident ».
 
 ```console
@@ -113,6 +133,8 @@ git fetch --tags && git switch -c cours-09 symfony-09-depart
 ```
 
 ### 10 · Symfony - L'authentification
+
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-l-authentification>
 
 Règles de validation des tickets.
 
@@ -122,6 +144,8 @@ git fetch --tags && git switch -c cours-10 symfony-10-depart
 
 ### 11 · Symfony - Rôles et autorisations
 
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-roles-et-autorisations>
+
 Connexion des utilisateurs, auteur relié aux tickets.
 
 ```console
@@ -130,6 +154,8 @@ git fetch --tags && git switch -c cours-11 symfony-11-depart
 
 ### 12 · Symfony - Services et injection de dépendances
 
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-services-et-injection-de-dependances>
+
 Droits par rôle, voter sur les tickets.
 
 ```console
@@ -137,6 +163,8 @@ git fetch --tags && git switch -c cours-12 symfony-12-depart
 ```
 
 ### 13 · Symfony - Exposer une API JSON
+
+Cours : <https://formations.beaupeyrat.org/courses/sebthar/symfony-exposer-une-api-json>
 
 Service de calcul du délai de résolution.
 
