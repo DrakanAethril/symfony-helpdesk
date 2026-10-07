@@ -3,12 +3,14 @@
 {% block title %}Tickets · {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Les tickets</h1>
-    <ul>
-    {% for ticket in tickets %}
-        {{ include('ticket/_ticket.html.twig') }}
-    {% else %}
-        <li>Aucun ticket.</li>
-    {% endfor %}
+    <h1 class="text-2xl font-bold">Les tickets</h1>
+    <ul class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {% for ticket in tickets %}
+            <li class="rounded-xl border p-4">
+                {{ include('ticket/_ticket.html.twig') }}
+            </li>
+        {% else %}
+            <li class="text-gray-500">Aucun ticket.</li>
+        {% endfor %}
     </ul>
 {% endblock %}

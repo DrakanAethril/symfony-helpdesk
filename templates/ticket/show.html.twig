@@ -3,9 +3,9 @@
 {% block title %}{{ ticket.titre }} · {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>{{ ticket.titre }}</h1>
-    <p>Priorité : {{ ticket.priorite|upper }}</p>
-    <p>Créé le {{ ticket.creeLe|date('d/m/Y') }}</p>
-    <p>{{ ticket.description }}</p>
-    <a href="{{ path('ticket_index') }}">Retour</a>
+    <h1 class="text-2xl font-bold">{{ ticket.titre }}</h1>
+    {% include 'ticket/_priorite.html.twig' with { priorite: ticket.priorite } %}
+    <p class="mt-4">{{ ticket.description }}</p>
+    <p class="mt-2 text-sm text-gray-500">Créé le {{ ticket.creeLe|date('d/m/Y') }}</p>
+    <a href="{{ path('ticket_index') }}" class="mt-6 inline-block text-blue-700 underline">Retour aux tickets</a>
 {% endblock %}

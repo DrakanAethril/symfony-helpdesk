@@ -90,6 +90,9 @@ RUN <<-EOF
 	composer dump-env prod
 	composer run-script --no-dev post-install-cmd
 	if [ -f importmap.php ]; then
+		if [ -f config/packages/symfonycasts_tailwind.yaml ]; then
+			php bin/console tailwind:build --minify
+		fi
 		php bin/console asset-map:compile
 	fi
 	chmod +x bin/console

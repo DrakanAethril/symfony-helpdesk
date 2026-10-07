@@ -8,6 +8,7 @@
         {% endblock %}
 
         {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
 
         {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
@@ -17,14 +18,18 @@
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
     </head>
-    <body>
-        <nav>
-            <a href="{{ path('accueil') }}">Accueil</a>
-            <a href="{{ path('ticket_index') }}">Tickets</a>
-        </nav>
-        <main>
+    <body class="bg-gray-50 text-gray-900">
+        {% set route = app.request.attributes.get('_route') %}
+        {% set actif = 'border-b-2 border-blue-600 font-bold' %}
+        <header class="flex items-center justify-between p-4">
+            <span class="text-xl font-bold">Helpdesk</span>
+            <nav class="flex gap-4">
+                <a href="{{ path('accueil') }}" class="{{ route == 'accueil' ? actif }}">Accueil</a>
+                <a href="{{ path('ticket_index') }}" class="{{ route starts with 'ticket' ? actif }}">Tickets</a>
+            </nav>
+        </header>
+        <main class="mx-auto max-w-3xl p-6">
             {% block body %}{% endblock %}
         </main>
-        <footer>{% block pied %}Norbelle{% endblock %}</footer>
     </body>
 </html>

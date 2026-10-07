@@ -1,6 +1,4 @@
-<li>
-    <a href="{{ path('ticket_show', {id: ticket.id}) }}">
-        {{ ticket.titre }}
-    </a>
-    <small>{{ ticket.priorite|upper }}</small>
-</li>
+<a href="{{ path('ticket_show', {id: ticket.id}) }}"
+   class="font-semibold">{{ ticket.titre }}</a>
+{% include 'ticket/_priorite.html.twig'
+    with { priorite: ticket.priorite } %}
