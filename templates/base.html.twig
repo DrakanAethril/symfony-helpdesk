@@ -26,6 +26,9 @@
             <nav class="flex gap-4">
                 <a href="{{ path('accueil') }}" class="{{ route == 'accueil' ? actif }}">Accueil</a>
                 <a href="{{ path('ticket_index') }}" class="{{ route starts with 'ticket' ? actif }}">Tickets</a>
+                {% if is_granted('ROLE_RESPONSABLE') %}
+                    <a href="{{ path('tableau_bord') }}" class="{{ route == 'tableau_bord' ? actif }}">Tableau de bord</a>
+                {% endif %}
                 {% if app.user %}
                     <span class="text-sm text-gray-500">Connecté en tant que
                         {{ app.user.prenom }} {{ app.user.nom }}</span>

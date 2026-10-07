@@ -7,7 +7,7 @@
     <a href="{{ path('ticket_new') }}"
        class="mt-4 inline-block rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white">Déclarer un incident</a>
     <ul class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {% for ticket in tickets %}
+        {% for ticket in tickets|filter(t => is_granted('TICKET_VIEW', t)) %}
             <li class="rounded-xl border p-4">
                 {{ include('ticket/_ticket.html.twig') }}
             </li>

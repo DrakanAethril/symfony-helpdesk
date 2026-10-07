@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord · {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1 class="text-2xl font-bold">Tableau de bord</h1>
+    <p class="text-sm text-gray-500">L'activité du Helpdesk, pour les responsables.</p>
+
+    <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="rounded-xl border p-4">
+            <h2 class="text-lg font-semibold">Par statut</h2>
+            <dl class="mt-2">
+                {% for statut, nombre in parStatut %}
+                    <div class="flex justify-between"><dt>{{ statut }}</dt><dd class="font-semibold">{{ nombre }}</dd></div>
+                {% endfor %}
+            </dl>
+        </div>
+        <div class="rounded-xl border p-4">
+            <h2 class="text-lg font-semibold">Par priorité</h2>
+            <dl class="mt-2">
+                {% for priorite, nombre in parPriorite %}
+                    <div class="flex justify-between"><dt>{{ priorite|capitalize }}</dt><dd class="font-semibold">{{ nombre }}</dd></div>
+                {% endfor %}
+            </dl>
+        </div>
+    </div>
+
+    <h2 class="text-lg font-semibold mt-6">Tickets ouverts, les plus urgents d'abord</h2>
+    <ul class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {% for ticket in ouverts %}
+            <li class="rounded-xl border p-4">
+                {{ include('ticket/_ticket.html.twig') }}
+            </li>
+        {% else %}
+            <li class="text-gray-500">Aucun ticket ouvert.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

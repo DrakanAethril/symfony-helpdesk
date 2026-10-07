@@ -32,8 +32,13 @@
           Aucun matériel concerné.</li>
     {% endfor %}
     </ul>
-    <p class="mt-6 flex gap-4">
-        <a href="{{ path('ticket_edit', {id: ticket.id}) }}" class="text-blue-700 underline">Modifier</a>
+    <p class="mt-6 flex items-center gap-4">
+        {% if is_granted('TICKET_EDIT', ticket) %}
+            <a href="{{ path('ticket_edit', {id: ticket.id}) }}"
+               class="rounded-lg bg-blue-600 px-4 py-2
+                      font-semibold text-white">
+                Modifier</a>
+        {% endif %}
         <a href="{{ path('ticket_index') }}" class="text-blue-700 underline">Retour aux tickets</a>
     </p>
 {% endblock %}

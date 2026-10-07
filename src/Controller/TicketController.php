@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class TicketController extends AbstractController
 {
@@ -41,6 +42,7 @@ final class TicketController extends AbstractController
 
     #[Route('/tickets/{id}', name: 'ticket_show',
         requirements: ['id' => '\d+'], methods: ['GET'])]
+    #[IsGranted('TICKET_VIEW', 'ticket')]
     public function show(Ticket $ticket): Response
     {
         return $this->render('ticket/show.html.twig', [
@@ -50,6 +52,7 @@ final class TicketController extends AbstractController
 
     #[Route('/tickets/{id}/modifier', name: 'ticket_edit',
         requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    #[IsGranted('TICKET_EDIT', 'ticket')]
     public function edit(Ticket $ticket, Request $request, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(TicketType::class, $ticket);
