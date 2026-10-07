@@ -14,3 +14,5 @@ symfony-12-depart 8754d29606b005bc4c8aa6c8d875beee85999ce1 Départ du cours Symf
 symfony-13-depart b8231d3628e57623f93ae78cb800e3cf49fcaf5a Départ du cours Symfony - Services et injection de dépendances
 symfony-14-depart a94da3f3dd1d9abf52c00ba16b0b602d6616756e Départ du cours Symfony - Exposer une API JSON
 symfony-fin dc7c45c38b5b632f5eec8b3c791523544cae2b03 Fin de la série Symfony - projet terminé
+# correctif : FrankenPHP 1.12 au départ du cours 01
+!symfony-01-depart 50655073e16885e96b3ee0534ceddb0f1a56cedb Départ du cours Symfony - Démarrer avec symfony-docker

@@ -1,7 +1,8 @@
 name: Points de départ des cours
 
 # Crée les tags listés dans .github/points-de-depart.txt (une ligne : tag sha message).
-# Un tag déjà présent n'est jamais modifié.
+# Un tag déjà présent n'est jamais modifié, sauf si sa ligne commence par « ! » (correctif) :
+# il est alors recréé sur le sha indiqué, s'il n'y pointe pas déjà.
 on:
   push:
     branches:
@@ -29,6 +30,17 @@ jobs:
           while read -r tag sha message; do
             [ -z "$tag" ] && continue
             case "$tag" in \#*) continue ;; esac
+            if [ "${tag#!}" != "$tag" ]; then
+              tag="${tag#!}"
+              if [ "$(git rev-parse -q --verify "refs/tags/$tag^{commit}")" = "$(git rev-parse "$sha^{commit}")" ]; then
+                echo "$tag pointe déjà sur $sha"; continue
+              fi
+              git tag -d "$tag" 2>/dev/null || true
+              git push origin ":refs/tags/$tag" || true
+              git tag -a "$tag" -m "$message" "$sha"
+              git push origin "refs/tags/$tag"
+              echo "$tag recréé sur $sha"; continue
+            fi
             if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
               echo "$tag existe déjà"
             else
