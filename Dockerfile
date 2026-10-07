@@ -1,7 +1,8 @@
 #syntax=docker/dockerfile:1
 
 # Versions
-FROM dunglas/frankenphp:1-php8.5 AS frankenphp_upstream
+# FrankenPHP 1.13 embarque Mercure 1.0, incompatible avec le Caddyfile du modèle : rester en 1.12
+FROM dunglas/frankenphp:1.12-php8.5 AS frankenphp_upstream
 
 # The different stages of this Dockerfile are meant to be built into separate images
 # https://docs.docker.com/build/building/multi-stage/#stop-at-a-specific-build-stage
