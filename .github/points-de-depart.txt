@@ -10,3 +10,4 @@ symfony-08-depart 489145647c74eca6dfc40bbb43bd5d4a1d50dcad Départ du cours Symf
 symfony-09-depart 01bbc9797d1c543163b634e93547ae6967834a71 Départ du cours Symfony - Les formulaires
 symfony-10-depart b7ea9aa6a7aca8a79da0436d3784b5d4ce86668f Départ du cours Symfony - Valider les données
 symfony-11-depart 20d7be9b984b77f77616c80b02cfa8fceaa6b0b0 Départ du cours Symfony - L'authentification
+symfony-12-depart 8754d29606b005bc4c8aa6c8d875beee85999ce1 Départ du cours Symfony - Rôles et autorisations
