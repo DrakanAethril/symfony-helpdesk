@@ -5,4 +5,15 @@
     <p class="mt-2">Déclarer et suivre les incidents.</p>
     <a href="{{ path('ticket_index') }}"
        class="mt-4 inline-block rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white">Voir les tickets</a>
+
+    <h2 class="text-lg font-semibold mt-6">Tickets ouverts, les plus urgents d'abord</h2>
+    <ul class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {% for ticket in tickets %}
+            <li class="rounded-xl border p-4">
+                {{ include('ticket/_ticket.html.twig') }}
+            </li>
+        {% else %}
+            <li class="text-gray-500">Aucun ticket ouvert.</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

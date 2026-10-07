@@ -4,8 +4,17 @@
 
 {% block body %}
     <h1 class="text-2xl font-bold">{{ ticket.titre }}</h1>
-    {% include 'ticket/_priorite.html.twig' with { priorite: ticket.priorite } %}
+    {% include 'ticket/_priorite.html.twig' with { priorite: ticket.priorite.value } %}
     <p class="mt-4">{{ ticket.description }}</p>
-    <p class="mt-2 text-sm text-gray-500">Créé le {{ ticket.creeLe|date('d/m/Y') }}</p>
+    <dl class="mt-4">
+        <dt class="font-medium">Statut</dt>
+        <dd>{{ ticket.statut.value }}</dd>
+        <dt class="font-medium">Créé le</dt>
+        <dd>{{ ticket.creeLe|date('d/m/Y H:i') }}</dd>
+        {% if ticket.resoluLe %}
+            <dt class="font-medium">Résolu le</dt>
+            <dd>{{ ticket.resoluLe|date('d/m/Y H:i') }}</dd>
+        {% endif %}
+    </dl>
     <a href="{{ path('ticket_index') }}" class="mt-6 inline-block text-blue-700 underline">Retour aux tickets</a>
 {% endblock %}

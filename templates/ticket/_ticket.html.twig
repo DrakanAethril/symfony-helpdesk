@@ -1,4 +1,7 @@
 <a href="{{ path('ticket_show', {id: ticket.id}) }}"
    class="font-semibold">{{ ticket.titre }}</a>
 {% include 'ticket/_priorite.html.twig'
-    with { priorite: ticket.priorite } %}
+    with { priorite: ticket.priorite.value } %}
+<p class="mt-2 text-sm text-gray-500">
+    <time>{{ ticket.creeLe|date('d/m/Y H:i') }}</time>
+</p>

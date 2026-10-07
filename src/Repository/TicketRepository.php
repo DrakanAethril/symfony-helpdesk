@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Ticket;
+use App\Enum\Statut;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,28 +17,21 @@ class TicketRepository extends ServiceEntityRepository
         parent::__construct($registry, Ticket::class);
     }
 
-//    /**
-//     * @return Ticket[] Returns an array of Ticket objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Ticket
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * Les tickets ni résolus ni fermés, les plus urgents d'abord.
+     *
+     * @return Ticket[]
+     */
+    public function findOuvertsParPriorite(): array
+    {
+        return $this->createQueryBuilder('t')
+            ->addSelect("CASE t.priorite WHEN 'critique' THEN 1
+                WHEN 'haute' THEN 2 WHEN 'normale' THEN 3
+                ELSE 4 END AS HIDDEN rang")
+            ->andWhere('t.statut NOT IN (:clos)')
+            ->setParameter('clos', [Statut::Resolu, Statut::Ferme])
+            ->orderBy('rang', 'ASC')
+            ->addOrderBy('t.creeLe', 'ASC')
+            ->getQuery()->getResult();
+    }
 }
