@@ -1,0 +1,39 @@
+name: Points de départ des cours
+
+# Crée les tags listés dans .github/points-de-depart.txt (une ligne : tag sha message).
+# Un tag déjà présent n'est jamais modifié.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/points-de-depart.txt
+  workflow_dispatch: ~
+
+permissions:
+  contents: write
+
+jobs:
+  tags:
+    name: Créer les tags
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Créer les tags manquants
+        run: |
+          git config user.name "Sébastien Tharaud"
+          git config user.email "sebthar@gmail.com"
+          while read -r tag sha message; do
+            [ -z "$tag" ] && continue
+            case "$tag" in \#*) continue ;; esac
+            if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+              echo "$tag existe déjà"
+            else
+              git tag -a "$tag" -m "$message" "$sha"
+              git push origin "refs/tags/$tag"
+              echo "$tag créé sur $sha"
+            fi
+          done < .github/points-de-depart.txt
