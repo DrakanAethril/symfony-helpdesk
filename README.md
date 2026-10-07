@@ -26,7 +26,7 @@ L'environnement repose sur [symfony-docker](https://github.com/dunglas/symfony-d
 Une seule fois, au début :
 
 ```console
-git clone https://github.com/<compte>/symfony-helpdesk.git
+git clone https://github.com/DrakanAethril/symfony-helpdesk.git
 cd symfony-helpdesk
 ```
 
