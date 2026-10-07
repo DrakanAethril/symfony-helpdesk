@@ -6,8 +6,11 @@ use App\Repository\MaterielRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MaterielRepository::class)]
+#[UniqueEntity('numeroInventaire', message: 'Ce numéro est déjà attribué.')]
 class Materiel
 {
     #[ORM\Id]
@@ -15,7 +18,9 @@ class Materiel
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 20, unique: true)]
+    #[Assert\NotBlank]
+    #[Assert\Regex('/^[A-Z]{2,3}-\d{4}$/', message: 'Le numéro d\'inventaire suit le format PC-0042.')]
     private ?string $numeroInventaire = null;
 
     #[ORM\Column(length: 30)]
@@ -45,7 +50,7 @@ class Materiel
         return $this->numeroInventaire;
     }
 
-    public function setNumeroInventaire(string $numeroInventaire): static
+    public function setNumeroInventaire(?string $numeroInventaire): static
     {
         $this->numeroInventaire = $numeroInventaire;
 

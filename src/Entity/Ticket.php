@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TicketRepository::class)]
 class Ticket
@@ -19,12 +20,20 @@ class Ticket
     private ?int $id = null;
 
     #[ORM\Column(length: 120)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 10, max: 120)]
     private ?string $titre = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 20,
+        minMessage: 'Décrivez le problème en {{ limit }} caractères au moins.',
+    )]
     private ?string $description = null;
 
     #[ORM\Column(enumType: Priorite::class)]
+    #[Assert\NotNull]
     private ?Priorite $priorite = null;
 
     #[ORM\Column(enumType: Statut::class)]
@@ -38,6 +47,7 @@ class Ticket
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: 'Choisissez une catégorie.')]
     private ?Categorie $categorie = null;
 
     /**
@@ -63,7 +73,7 @@ class Ticket
         return $this->titre;
     }
 
-    public function setTitre(string $titre): static
+    public function setTitre(?string $titre): static
     {
         $this->titre = $titre;
 
@@ -75,7 +85,7 @@ class Ticket
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
@@ -87,7 +97,7 @@ class Ticket
         return $this->priorite;
     }
 
-    public function setPriorite(Priorite $priorite): static
+    public function setPriorite(?Priorite $priorite): static
     {
         $this->priorite = $priorite;
 
