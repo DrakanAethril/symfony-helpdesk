@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tickets · {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>Les tickets</h1>
+    <ul>
+    {% for ticket in tickets %}
+        {{ include('ticket/_ticket.html.twig') }}
+    {% else %}
+        <li>Aucun ticket.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

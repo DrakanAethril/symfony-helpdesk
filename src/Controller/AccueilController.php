@@ -11,8 +11,6 @@ final class AccueilController extends AbstractController
     #[Route('/', name: 'accueil')]
     public function index(): Response
     {
-        $url = $this->generateUrl('ticket_index');
-
-        return new Response('<h1>Helpdesk de Norbelle</h1><p><a href="'.$url.'">Voir les tickets</a></p>');
+        return $this->render('accueil/index.html.twig');
     }
 }

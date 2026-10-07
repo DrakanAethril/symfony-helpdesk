@@ -46,15 +46,9 @@ final class TicketController extends AbstractController
     #[Route('/tickets', name: 'ticket_index', methods: ['GET'])]
     public function index(): Response
     {
-        $html = '<html><head><title>Tickets</title></head>';
-        $html .= '<body><h1>Les tickets</h1><ul>';
-        foreach (self::TICKETS as $id => $ticket) {
-            $url = $this->generateUrl('ticket_show', ['id' => $id]);
-            $titre = htmlspecialchars($ticket['titre']);
-            $html .= '<li><a href="'.$url.'">'.$titre.'</a></li>';
-        }
-
-        return new Response($html.'</ul></body></html>');
+        return $this->render('ticket/index.html.twig', [
+            'tickets' => self::TICKETS,
+        ]);
     }
 
     #[Route('/tickets/{id}', name: 'ticket_show',
@@ -64,8 +58,9 @@ final class TicketController extends AbstractController
         if (!isset(self::TICKETS[$id])) {
             throw $this->createNotFoundException();
         }
-        $ticket = self::TICKETS[$id];
 
-        return new Response('<h1>'.htmlspecialchars($ticket['titre']).'</h1>');
+        return $this->render('ticket/show.html.twig', [
+            'ticket' => self::TICKETS[$id],
+        ]);
     }
 }
