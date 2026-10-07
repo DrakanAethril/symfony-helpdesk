@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Déclarer un incident · {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1 class="text-2xl font-bold">Déclarer un incident</h1>
+    {{ form_start(form, {attr: {class: 'mt-4'}}) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.priorite) }}
+        {{ form_row(form.categorie) }}
+        <button type="submit" class="rounded-lg bg-blue-600
+          px-4 py-2 font-semibold text-white">Envoyer</button>
+    {{ form_end(form) }}
+{% endblock %}

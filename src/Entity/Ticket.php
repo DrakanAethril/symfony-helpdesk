@@ -48,6 +48,8 @@ class Ticket
 
     public function __construct()
     {
+        $this->statut = Statut::Nouveau;
+        $this->creeLe = new \DateTimeImmutable();
         $this->materiels = new ArrayCollection();
     }
 

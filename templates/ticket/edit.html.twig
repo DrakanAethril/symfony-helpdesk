@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le ticket · {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1 class="text-2xl font-bold">Modifier le ticket</h1>
+    {{ form_start(form, {attr: {class: 'mt-4'}}) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.priorite) }}
+        {{ form_row(form.categorie) }}
+        <button type="submit" class="rounded-lg bg-blue-600
+          px-4 py-2 font-semibold text-white">Enregistrer</button>
+    {{ form_end(form) }}
+    <a href="{{ path('ticket_index') }}" class="mt-6 inline-block text-blue-700 underline">Retour aux tickets</a>
+{% endblock %}

@@ -1,1 +1,3 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@source "../../vendor/symfony/twig-bridge/Resources/views/Form/tailwind_2_layout.html.twig";

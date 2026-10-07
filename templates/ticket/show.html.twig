@@ -28,5 +28,8 @@
           Aucun matériel concerné.</li>
     {% endfor %}
     </ul>
-    <a href="{{ path('ticket_index') }}" class="mt-6 inline-block text-blue-700 underline">Retour aux tickets</a>
+    <p class="mt-6 flex gap-4">
+        <a href="{{ path('ticket_edit', {id: ticket.id}) }}" class="text-blue-700 underline">Modifier</a>
+        <a href="{{ path('ticket_index') }}" class="text-blue-700 underline">Retour aux tickets</a>
+    </p>
 {% endblock %}
